@@ -11,7 +11,7 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
     use Keboola\Encryption\AES128Encryptor;
 	$encryptor = new AES128Encryptor('mykey');
     $encryptedMessage = $encryptor->encrypt($inputMessage);
-``
+```
 
 ## Resources
  * https://gist.github.com/RiANOl/1077723

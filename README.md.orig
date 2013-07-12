@@ -1,4 +1,4 @@
-# Keboola PHP Encryption [![Build Status](https://travis-ci.org/keboola/php-encryption.png?branch=master)](https://travis-ci.org/keboola/php-encryption)
+# Keboola PHP Encryption
 
 Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption algorithms.
 

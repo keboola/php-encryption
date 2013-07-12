@@ -3,7 +3,7 @@
 Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption algorithms.
 
 ## Currently supported ciphers
- * AES128 CBC with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography)#PKCS7)
+ * AES128 CBC with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)
 
 
 ## Resources

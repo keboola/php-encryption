@@ -5,6 +5,13 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
 ## Currently supported ciphers
  * AES128 CBC with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)
 
+## Usage
+
+```php
+    use Keboola\Encryption\AES128Encryptor;
+	$encryptor = new AES128Encryptor('mykey');
+    $encryptedMessage = $encryptor->encrypt($inputMessage);
+``
 
 ## Resources
  * https://gist.github.com/RiANOl/1077723

@@ -9,8 +9,8 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
 ## Usage
 
 ```php
-    use Keboola\Encryption\AESEncryptor;
-	$encryptor = new AESEncryptor('UfhZPgPLpz7YVjXwNGTpUD8WpoddfpXn'); // 256 bit key
+    use Keboola\Encryption\AesEncryptor;
+	$encryptor = new AesEncryptor('UfhZPgPLpz7YVjXwNGTpUD8WpoddfpXn'); // 256 bit key
     $encryptedMessage = $encryptor->encrypt($inputMessage);
 ```
 

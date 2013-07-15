@@ -9,7 +9,7 @@
 
 namespace Keboola\Encryption;
 
-class AESEncryptor implements EncryptorInterface
+class AesEncryptor implements EncryptorInterface
 {
 
 	/**

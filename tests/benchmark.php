@@ -17,7 +17,7 @@ $keys = array(
 foreach ($keys as $key) {
 	echo 'Strength: ' . (strlen($key) * 8) . PHP_EOL;
 	$startTime = microtime(true);
-	$encryptor = new \Keboola\Encryption\AESEncryptor($key);
+	$encryptor = new \Keboola\Encryption\AesEncryptor($key);
 
 	$i = 0;
 	do {

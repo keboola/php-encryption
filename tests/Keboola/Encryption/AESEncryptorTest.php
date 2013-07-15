@@ -7,16 +7,16 @@
 
 namespace Keboola\Encryption\Tests;
 
-use Keboola\Encryption\AESEncryptor;
+use Keboola\Encryption\AesEncryptor;
 
-class AESEncryptorTest extends \PHPUnit_Framework_TestCase
+class AesEncryptorTest extends \PHPUnit_Framework_TestCase
 {
 
 	private $key128bit = 'u7Vd3wukDDghgMzZ';
 
 	public function testEncryptedMessageShouldNotBeEqualToSourceMessage()
 	{
-		$encryptor = new AESEncryptor($this->key128bit);
+		$encryptor = new AesEncryptor($this->key128bit);
 		$inputMessage = 'someMessage';
 		$this->assertNotEquals($inputMessage, $encryptor->encrypt($inputMessage));
 	}
@@ -27,7 +27,7 @@ class AESEncryptorTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testEncryptionShouldNotChangeMessage($inputMessage)
 	{
-		$encryptor = new AESEncryptor($this->key128bit);
+		$encryptor = new AesEncryptor($this->key128bit);
 		$this->assertEquals($inputMessage, $encryptor->decrypt($encryptor->encrypt($inputMessage)));
 	}
 
@@ -46,7 +46,7 @@ class AESEncryptorTest extends \PHPUnit_Framework_TestCase
 	{
 		$inputMessage = 'someMessage';
 
-		$encryptor = new AESEncryptor($this->key128bit);
+		$encryptor = new AesEncryptor($this->key128bit);
 		$this->assertNotEquals($encryptor->encrypt($inputMessage), $encryptor->encrypt($inputMessage));
 	}
 
@@ -55,7 +55,7 @@ class AESEncryptorTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testExceptionShouldBeThrownOnInvalidKeyLength()
 	{
-		new AESEncryptor('key');
+		new AesEncryptor('key');
 	}
 
 }

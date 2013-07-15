@@ -1,3 +1,6 @@
+# 0.2.0
+ * [BC break] Acronyms in class names uses `StudlyCaps`
+
 # 0.1.1
  * [Bugfix] Use non blocking random source for initialization vector create
 

@@ -1,18 +1,24 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
  * User: martinhalamicek
  * Date: 7/8/13
  * Time: 3:06 PM
- * To change this template use File | Settings | File Templates.
  */
 
 namespace Keboola\Encryption;
 
 interface EncryptorInterface
 {
+	/**
+	 * @param $data string data to encrypt
+	 * @return string encrypted data
+	 */
 	public function encrypt($data);
 
-	public function decrypt($data);
+	/**
+	 * @param $encryptedData string
+	 * @return string decrypted data
+	 */
+	public function decrypt($encryptedData);
 
 }

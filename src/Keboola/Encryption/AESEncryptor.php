@@ -1,9 +1,6 @@
 <?php
 /**
- * AES Encryption with PKCS7 padding http://en.wikipedia.org/wiki/Padding_(cryptography)#PKCS7
- * https://gist.github.com/RiANOl/1077723
- * http://php.net/manual/en/function.mcrypt-encrypt.php
- * http://stackoverflow.com/questions/7448763/proper-php-mcrypt-encryption-methods
+ * AES Encryption in CBC mode with PKCS7 padding
  *
  * User: martinhalamicek
  * Date: 7/8/13
@@ -16,7 +13,7 @@ class AESEncryptor implements EncryptorInterface
 {
 
 	/**
-	 * @var Encryption key
+	 * @var string Encryption key
 	 */
 	private $key;
 
@@ -36,7 +33,7 @@ class AESEncryptor implements EncryptorInterface
 	private $blockSize;
 
 	/**
-	 * @param $key encryption key should be 16, 24 or 32 characters long form 128, 192, 256 bit encryption
+	 * @param string $key encryption key should be 16, 24 or 32 characters long form 128, 192, 256 bit encryption
 	 */
 	public function __construct($key)
 	{

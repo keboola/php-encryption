@@ -1,3 +1,5 @@
+# 0.2.1
+ * [Bugfix] Tests fixed
 # 0.2.0
  * [BC break] Acronyms in class names uses `StudlyCaps`
 

@@ -12,7 +12,7 @@
 
 namespace Keboola\Encryption;
 
-class AES128Encryptor implements EncryptorInterface
+class AESEncryptor implements EncryptorInterface
 {
 
 	private $_cipher = MCRYPT_RIJNDAEL_128;

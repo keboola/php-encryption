@@ -7,14 +7,14 @@
 
 namespace Keboola\Encryption\Tests;
 
-use Keboola\Encryption\AES128Encryptor;
+use Keboola\Encryption\AESEncryptor;
 
 class AESEncryptorTest extends \PHPUnit_Framework_TestCase
 {
 
 	public function testEncryptedMessageShouldNotBeEqualToSourceMessage()
 	{
-		$encryptor = new AES128Encryptor('mykey');
+		$encryptor = new AESEncryptor('mykey');
 		$inputMessage = 'someMessage';
 		$this->assertNotEquals($inputMessage, $encryptor->encrypt($inputMessage));
 	}
@@ -25,7 +25,7 @@ class AESEncryptorTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testEncryptionShouldNotChangeMessage($inputMessage)
 	{
-		$encryptor = new AES128Encryptor('mykey');
+		$encryptor = new AESEncryptor('mykey');
 		$this->assertEquals($inputMessage, $encryptor->decrypt($encryptor->encrypt($inputMessage)));
 	}
 
@@ -44,7 +44,7 @@ class AESEncryptorTest extends \PHPUnit_Framework_TestCase
 	{
 		$inputMessage = 'someMessage';
 
-		$encryptor = new AES128Encryptor('mykey');
+		$encryptor = new AESEncryptor('mykey');
 		$this->assertNotEquals($encryptor->encrypt($inputMessage), $encryptor->encrypt($inputMessage));
 	}
 

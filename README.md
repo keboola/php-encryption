@@ -4,7 +4,7 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
 
 ## Currently supported ciphers
  * AES in CBC mode with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)
-  *  Encryption strength is determined by key length. Key lengths 26, 24, 32 corresponds with 128, 192, 256 bit encryption.
+  *  Encryption strength is determined by key length. Key lengths 16, 24, 32 corresponds with 128, 192, 256 bit encryption.
 
 ## Usage
 

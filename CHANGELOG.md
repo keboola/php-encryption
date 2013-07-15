@@ -1,3 +1,6 @@
+# 0.1.1
+ * [Bugfix] Use non blocking random source for initialization vector create
+
 # 0.1.0
  * [BC break] Class AES128Encryptor renamed to AESEncryptor
  * [BC break] Key size must be 128, 192 or 256 bits

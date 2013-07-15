@@ -62,7 +62,7 @@ class AESEncryptor implements EncryptorInterface
 	 */
 	public function encrypt($data)
 	{
-		$iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($this->mcryptModule), MCRYPT_DEV_RANDOM);
+		$iv = mcrypt_create_iv($this->initializationVectorSize, MCRYPT_DEV_URANDOM);
 		mcrypt_generic_init($this->mcryptModule, $this->key, $iv);
 		$encrypted = mcrypt_generic($this->mcryptModule, $this->pad($data));
 		mcrypt_generic_deinit($this->mcryptModule);

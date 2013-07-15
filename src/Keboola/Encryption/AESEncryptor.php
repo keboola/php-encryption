@@ -37,15 +37,20 @@ class AESEncryptor implements EncryptorInterface
 	 */
 	public function __construct($key)
 	{
-		$this->key = $key;
 		$this->mcryptModule = mcrypt_module_open('rijndael-128', '', 'cbc', '');
 		if ($this->mcryptModule === false) {
-			throw new \InvalidArgumentException("Unknown algorithm/mode");
+			throw new \InvalidArgumentException("Unknown algorithm/mode.");
 		}
 
-		if (strlen($key) > ($keyMaxLength = mcrypt_enc_get_key_size($this->mcryptModule))) {
+		$keyLength = strlen($key);
+		if ($keyLength > ($keyMaxLength = mcrypt_enc_get_key_size($this->mcryptModule))) {
 			throw new \InvalidArgumentException("The key length must be less or equal than $keyMaxLength.");
 		}
+		if (!in_array($keyLength, array(16, 24, 32))) {
+			throw new \InvalidArgumentException("Key length must be 16, 24 or 32 bytes for 128, 192, 256 bit encryption.");
+		}
+
+		$this->key = $key;
 
 		$this->initializationVectorSize = mcrypt_enc_get_iv_size($this->mcryptModule);
 		$this->blockSize = mcrypt_enc_get_block_size($this->mcryptModule);

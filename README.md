@@ -3,13 +3,14 @@
 Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption algorithms.
 
 ## Currently supported ciphers
- * AES128 CBC with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)
+ * AES in CBC mode with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)
+  *  Encryption strength is determined by key length. Key lengths 26, 24, 32 corresponds with 128, 192, 256 bit encryption.
 
 ## Usage
 
 ```php
-    use Keboola\Encryption\AES128Encryptor;
-	$encryptor = new AES128Encryptor('mykey');
+    use Keboola\Encryption\AESEncryptor;
+	$encryptor = new AESEncryptor('UfhZPgPLpz7YVjXwNGTpUD8WpoddfpXn'); // 256 bit key
     $encryptedMessage = $encryptor->encrypt($inputMessage);
 ```
 
@@ -17,3 +18,5 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
  * https://gist.github.com/RiANOl/1077723
  * http://php.net/manual/en/function.mcrypt-encrypt.php
  * http://stackoverflow.com/questions/7448763/proper-php-mcrypt-encryption-methods
+ * http://www.coderelic.com/2011/10/aes-256-encryption-with-php/
+ * http://en.wikipedia.org/wiki/Advanced_Encryption_Standard

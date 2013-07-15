@@ -15,21 +15,43 @@ namespace Keboola\Encryption;
 class AESEncryptor implements EncryptorInterface
 {
 
-	private $_cipher = MCRYPT_RIJNDAEL_128;
-	private $_mode = MCRYPT_MODE_CBC;
+	/**
+	 * @var Encryption key
+	 */
+	private $key;
 
-	private $_key;
+	/**
+	 * @var int Mcrypt initialization vector size
+	 */
+	private $initializationVectorSize;
 
-	private $_initializationVectorSize;
+	/**
+	 * @var resource mcrypt module resource
+	 */
+	private $mcryptModule;
 
+	/**
+	 * @var int encryption block size
+	 */
+	private $blockSize;
+
+	/**
+	 * @param $key encryption key should be 16, 24 or 32 characters long form 128, 192, 256 bit encryption
+	 */
 	public function __construct($key)
 	{
-		$this->_key = $key;
-		$this->_initializationVectorSize = mcrypt_get_iv_size($this->_cipher, $this->_mode);
+		$this->key = $key;
+		$this->mcryptModule = mcrypt_module_open('rijndael-128', '', 'cbc', '');
+		if ($this->mcryptModule === false) {
+			throw new \InvalidArgumentException("Unknown algorithm/mode");
+		}
 
-		if (strlen($key) > ($keyMaxLength = mcrypt_get_key_size($this->_cipher, $this->_mode))) {
+		if (strlen($key) > ($keyMaxLength = mcrypt_enc_get_key_size($this->mcryptModule))) {
 			throw new \InvalidArgumentException("The key length must be less or equal than $keyMaxLength.");
 		}
+
+		$this->initializationVectorSize = mcrypt_enc_get_iv_size($this->mcryptModule);
+		$this->blockSize = mcrypt_enc_get_block_size($this->mcryptModule);
 	}
 
 	/**
@@ -38,16 +60,11 @@ class AESEncryptor implements EncryptorInterface
 	 */
 	public function encrypt($data)
 	{
-		$blockSize = mcrypt_get_block_size($this->_cipher, $this->_mode);
-		$pad = $blockSize - (strlen($data) % $blockSize);
-		$iv = mcrypt_create_iv($this->_initializationVectorSize, MCRYPT_DEV_URANDOM);
-		return $iv . mcrypt_encrypt(
-			$this->_cipher,
-			$this->_key,
-			$data . str_repeat(chr($pad), $pad),
-			$this->_mode,
-			$iv
-		);
+		$iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($this->mcryptModule), MCRYPT_DEV_RANDOM);
+		mcrypt_generic_init($this->mcryptModule, $this->key, $iv);
+		$encrypted = mcrypt_generic($this->mcryptModule, $this->pad($data));
+		mcrypt_generic_deinit($this->mcryptModule);
+		return $iv. $encrypted;
 	}
 
 	/**
@@ -56,16 +73,28 @@ class AESEncryptor implements EncryptorInterface
 	 */
 	public function decrypt($encryptedData)
 	{
-		$initializationVector = substr($encryptedData, 0, $this->_initializationVectorSize);
-		$data =  mcrypt_decrypt(
-			$this->_cipher,
-			$this->_key,
-			substr($encryptedData, $this->_initializationVectorSize),
-			$this->_mode,
-			$initializationVector
-		);
+		$initializationVector = substr($encryptedData, 0, $this->initializationVectorSize);
+		mcrypt_generic_init($this->mcryptModule, $this->key, $initializationVector);
+		$decryptedData = mdecrypt_generic($this->mcryptModule, substr($encryptedData, $this->initializationVectorSize));
+		mcrypt_generic_deinit($this->mcryptModule);
+		return $this->unpad($decryptedData);
+	}
+
+	private function pad($data)
+	{
+		$pad = $this->blockSize - (strlen($data) % $this->blockSize);
+		return $data . str_repeat(chr($pad), $pad);
+	}
+
+	private function unpad($data)
+	{
 		$pad = ord($data[strlen($data) - 1]);
 		return substr($data, 0, -$pad);
+	}
+
+	public function __destruct()
+	{
+		mcrypt_module_close($this->mcryptModule);
 	}
 
 }

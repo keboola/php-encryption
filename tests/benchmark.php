@@ -13,15 +13,16 @@ $keys = array(
 	'dTfYyTgiG7TFvoHMVVtJpw4moiRLxpEi',
 );
 
+
 foreach ($keys as $key) {
 	echo 'Strength: ' . (strlen($key) * 8) . PHP_EOL;
-	$encryptor = new \Keboola\Encryption\AESEncryptor($key);
-
 	$startTime = microtime(true);
+	$encryptor = new \Keboola\Encryption\AESEncryptor($key);
 
 	$i = 0;
 	do {
-		$encryptor->encrypt(openssl_random_pseudo_bytes(1000));
+		$encryptedData = $encryptor->encrypt(openssl_random_pseudo_bytes(1000));
+		$encryptor->decrypt($encryptedData);
 	} while($i++ < 100000 );
 
 	echo 'Done in: ' . (microtime(true) - $startTime) . PHP_EOL;

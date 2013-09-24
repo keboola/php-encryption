@@ -20,3 +20,4 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
  * https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation
  * http://www.coderelic.com/2011/10/aes-256-encryption-with-php/
  * http://en.wikipedia.org/wiki/Advanced_Encryption_Standard
+ * http://blog.agilebits.com/2013/03/09/guess-why-were-moving-to-256-bit-aes-keys/

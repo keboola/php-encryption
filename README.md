@@ -1,4 +1,7 @@
 # Keboola PHP Encryption [![Build Status](https://travis-ci.org/keboola/php-encryption.png?branch=master)](https://travis-ci.org/keboola/php-encryption)
+[![Latest Stable Version](https://poser.pugx.org/keboola/php-encryption/v/stable.svg)](https://packagist.org/packages/keboola/php-encryption)
+[![License](https://poser.pugx.org/keboola/php-encryption/license.svg)](https://packagist.org/packages/keboola/php-encryption)
+[![Total Downloads](https://poser.pugx.org/keboola/php-encryption/downloads.svg)](https://packagist.org/packages/keboola/php-encryption) 
 
 Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption algorithms.
 

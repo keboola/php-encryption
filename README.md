@@ -3,11 +3,12 @@
 [![License](https://poser.pugx.org/keboola/php-encryption/license.svg)](https://packagist.org/packages/keboola/php-encryption)
 [![Total Downloads](https://poser.pugx.org/keboola/php-encryption/downloads.svg)](https://packagist.org/packages/keboola/php-encryption) 
 
+
+Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption algorithms.
+
 **WARNING!!!**
 There might be a security vulnerability. Read more https://github.com/keboola/php-encryption/issues/3
 Consider using another [PHP Encryption](https://github.com/keboola/php-encryption/issues/3) library. 
-
-Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption algorithms.
 
 ## Currently supported ciphers
  * AES in CBC mode with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)

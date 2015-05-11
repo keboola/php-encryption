@@ -8,7 +8,7 @@ Wrapper for PHP [mcrypt](http://php.net/manual/en/book.mcrypt.php) encryption al
 
 **WARNING!!!**
 There might be a security vulnerability. Read more https://github.com/keboola/php-encryption/issues/3
-Consider using another [PHP Encryption](https://github.com/keboola/php-encryption/issues/3) library. 
+Consider using another [PHP Encryption](https://github.com/defuse/php-encryption) library. 
 
 ## Currently supported ciphers
  * AES in CBC mode with [PKCS7 padding](http://en.wikipedia.org/wiki/Padding_(cryptography\)#PKCS7)

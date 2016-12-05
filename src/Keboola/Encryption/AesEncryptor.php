@@ -90,6 +90,9 @@ class AesEncryptor implements EncryptorInterface
 
 	private function unpad($data)
 	{
+		if ($data === false) {
+			return false;
+		}
 		$pad = ord($data[strlen($data) - 1]);
 		return substr($data, 0, -$pad);
 	}
